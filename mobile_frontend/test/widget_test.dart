@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mobile_frontend/main.dart';
+import 'package:mobile_frontend/src/app.dart';
 
 void main() {
-  testWidgets('App generation message displayed', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+  testWidgets('App shows bottom navigation and Restaurants tab', (WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(home: SeamlessFoodDeliveryApp()));
 
-    expect(find.text('mobile_frontend App is being generated...'), findsOneWidget);
-    expect(find.byType(CircularProgressIndicator), findsOneWidget);
-  });
-
-  testWidgets('App bar has correct title', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
-
-    expect(find.text('mobile_frontend'), findsOneWidget);
+    // Check for bottom nav icons and title
+    expect(find.byIcon(Icons.restaurant_menu), findsOneWidget);
+    expect(find.text('Restaurants'), findsOneWidget);
+    expect(find.byType(BottomNavigationBar), findsOneWidget);
   });
 }
