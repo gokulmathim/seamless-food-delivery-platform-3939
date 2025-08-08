@@ -22,20 +22,25 @@ class OrderTrackingScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text("Order Status: ${currentOrder.status}",
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary)),
                   const SizedBox(height: 20),
                   Container(
                     height: 220,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      color: Colors.orange.withOpacity(0.12),
+                      color: const Color(0xFFFFA500).withOpacity(0.12),
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: const Icon(Icons.map, size: 100, color: Colors.orange),
+                    child: const Icon(Icons.map, size: 100, color: Color(0xFFFFA500)),
                   ),
                   const SizedBox(height: 10),
-                  const Text("Your delivery is on the way!",
-                      style: TextStyle(fontSize: 16)),
+                  Text("Your delivery is on the way!",
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Theme.of(context).colorScheme.primary)),
                 ],
               ),
             ),

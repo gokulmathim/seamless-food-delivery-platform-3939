@@ -56,7 +56,8 @@ class _RestaurantMenuScreenState extends State<RestaurantMenuScreen> {
                         trailing: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("\$${item.price.toStringAsFixed(2)}", style: const TextStyle(fontWeight: FontWeight.w600)),
+                            Text("\$${item.price.toStringAsFixed(2)}",
+                                style: TextStyle(fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.primary)),
                             IconButton(
                               icon: const Icon(Icons.add_shopping_cart),
                               color: Theme.of(context).colorScheme.primary,

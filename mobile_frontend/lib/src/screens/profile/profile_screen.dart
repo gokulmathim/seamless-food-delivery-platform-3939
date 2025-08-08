@@ -26,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
         actions: [
           if(authProvider.isAuthenticated)
             IconButton(
-              icon: const Icon(Icons.logout),
+              icon: const Icon(Icons.logout, color: Color(0xFFFFA500)),
               onPressed: () => authProvider.logout(),
               tooltip: "Logout",
             ),

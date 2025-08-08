@@ -52,6 +52,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Use consistent theming for orange throughout
     final primaryColor = Theme.of(context).colorScheme.primary;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -101,14 +102,28 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                     const SizedBox(height: 24),
                     _loading
-                        ? const CircularProgressIndicator()
-                        : ElevatedButton(
-                            onPressed: _submit,
-                            child: Text(_isLogin ? "Login" : "Register"),
+                        ? const CircularProgressIndicator(
+                            color: Color(0xFFFFA500),
+                          )
+                        : SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: _submit,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: primaryColor,
+                                foregroundColor: Colors.white,
+                                textStyle: const TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              child: Text(_isLogin ? "Login" : "Register"),
+                            ),
                           ),
                     const SizedBox(height: 8),
                     TextButton(
                       onPressed: _toggleForm,
+                      style: TextButton.styleFrom(
+                        foregroundColor: primaryColor,
+                        textStyle: const TextStyle(fontWeight: FontWeight.w600),
+                      ),
                       child: Text(_isLogin
                           ? "Don't have an account? Sign Up"
                           : "Already registered? Login"),

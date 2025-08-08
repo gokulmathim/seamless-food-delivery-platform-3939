@@ -34,7 +34,7 @@ class CartScreen extends StatelessWidget {
         title: const Text('Cart'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.delete_outline),
+            icon: const Icon(Icons.delete_outline, color: Color(0xFFFFA500)),
             onPressed: () => cartProvider.clearCart(),
             tooltip: "Clear Cart",
           ),
@@ -54,7 +54,7 @@ class CartScreen extends StatelessWidget {
                     title: Text(item.menuItem.name),
                     subtitle: Text("x${item.quantity}  •  \$${(item.menuItem.price * item.quantity).toStringAsFixed(2)}"),
                     trailing: IconButton(
-                      icon: const Icon(Icons.remove_circle_outline, color: Colors.redAccent),
+                      icon: const Icon(Icons.remove_circle_outline, color: Color(0xFFFFA500)),
                       onPressed: () => cartProvider.removeFromCart(item.menuItem.id),
                     ),
                   ),
@@ -65,10 +65,17 @@ class CartScreen extends StatelessWidget {
           ? null
           : Padding(
               padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(16)),
-                onPressed: placeOrder,
-                child: Text("Place Order (\$${cartProvider.totalPrice.toStringAsFixed(2)})"),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(16),
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    foregroundColor: Colors.white,
+                  ),
+                  onPressed: placeOrder,
+                  child: Text("Place Order (\$${cartProvider.totalPrice.toStringAsFixed(2)})"),
+                ),
               ),
             ),
     );
